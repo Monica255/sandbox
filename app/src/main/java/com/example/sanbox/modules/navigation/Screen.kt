@@ -1,0 +1,19 @@
+package com.example.sanbox.modules.navigation
+
+sealed class Screen(val route: String) {
+    data object Home : Screen("home")
+    data object Detail : Screen("detail/{id}") {
+        fun createRoute(id: Int) = "detail/$id"
+    }
+}
+
+enum class Modules(val moduleName: String, val id: Int) {
+    GRPC("GRPC", 1),
+    OTHERS("others", 2);
+
+    companion object {
+        fun fromId(id: Int): Modules? {
+            return entries.find { it.id == id }
+        }
+    }
+}
