@@ -100,6 +100,8 @@ dependencies {
     // wearable
     implementation(libs.play.services.wearable.v1820)
 
+    // Pagination
+    implementation(libs.androidx.paging.compose)
 
     // grpc
     implementation("io.grpc:grpc-okhttp:1.63.0")

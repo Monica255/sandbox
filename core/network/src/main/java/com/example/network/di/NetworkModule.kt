@@ -11,6 +11,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -44,6 +45,19 @@ class NetworkModule {
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://dogapi.dog")
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    @Named("paging")
+    fun provideRetrofitPaging(
+        okHttpClient: OkHttpClient,
+    ): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl("https://catfact.ninja")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

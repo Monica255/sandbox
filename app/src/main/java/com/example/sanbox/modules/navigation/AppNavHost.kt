@@ -12,6 +12,7 @@ import com.example.sanbox.modules.fetchdata.presenter.FetchDataScreen
 import com.example.sanbox.modules.grpc.presenter.GrpcScreen
 import com.example.sanbox.modules.home.HomeScreen
 import com.example.sanbox.modules.others.presenter.OthersScreen
+import com.example.sanbox.modules.pagination.presenter.PagingScreen
 import com.example.sanbox.modules.wear.presenter.WearScreen
 
 @Composable
@@ -45,6 +46,7 @@ fun AppNavHost() {
                 Modules.FETCH_DATA -> FetchDataScreen()
                 Modules.ECDSA -> EcdsaScreen()
                 Modules.WEAROS -> WearScreen()
+                Modules.PAGINATION -> PagingScreen()
                 else -> {}
             }
         }
