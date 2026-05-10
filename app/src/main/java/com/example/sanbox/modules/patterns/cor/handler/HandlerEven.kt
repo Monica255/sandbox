@@ -1,4 +1,4 @@
-package com.example.sanbox.modules.cor.handler
+package com.example.sanbox.modules.patterns.cor.handler
 
 class HandlerEven : Handler {
     override fun canHandle(data: String): Boolean = data.toIntOrNull()?.rem(2) == 0

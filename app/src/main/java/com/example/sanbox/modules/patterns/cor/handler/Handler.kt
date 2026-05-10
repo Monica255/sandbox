@@ -1,4 +1,4 @@
-package com.example.sanbox.modules.cor.handler
+package com.example.sanbox.modules.patterns.cor.handler
 
 interface Handler {
 

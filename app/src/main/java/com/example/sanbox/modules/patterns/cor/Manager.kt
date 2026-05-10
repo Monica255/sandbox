@@ -1,8 +1,8 @@
-package com.example.sanbox.modules.cor
+package com.example.sanbox.modules.patterns.cor
 
-import com.example.sanbox.modules.cor.handler.Handler
-import com.example.sanbox.modules.cor.handler.HandlerEven
-import com.example.sanbox.modules.cor.handler.HandlerOdd
+import com.example.sanbox.modules.patterns.cor.handler.Handler
+import com.example.sanbox.modules.patterns.cor.handler.HandlerEven
+import com.example.sanbox.modules.patterns.cor.handler.HandlerOdd
 
 class Manager {
 

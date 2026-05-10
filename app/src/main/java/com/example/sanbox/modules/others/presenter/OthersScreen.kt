@@ -206,7 +206,6 @@ fun Content(viewModel: OthersViewModel) {
                 OthersViewModel.Event.ShowToast -> {
                     snackbarHostState.showSnackbar("yow")
                 }
-                else -> {}
             }
         }
     }
