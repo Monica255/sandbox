@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.sanbox.modules.cor.presenter.CorScreen
+import com.example.sanbox.modules.ecdsa.presenter.EcdsaScreen
 import com.example.sanbox.modules.fetchdata.presenter.FetchDataScreen
 import com.example.sanbox.modules.grpc.presenter.GrpcScreen
 import com.example.sanbox.modules.home.HomeScreen
@@ -41,6 +42,7 @@ fun AppNavHost() {
                 Modules.COR -> CorScreen()
                 Modules.OTHERS -> OthersScreen()
                 Modules.FETCH_DATA -> FetchDataScreen()
+                Modules.ECDSA -> EcdsaScreen()
                 else -> {}
             }
         }
