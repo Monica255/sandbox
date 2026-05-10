@@ -1,9 +1,12 @@
 package com.example.network.di
 
+import com.example.network.interceptor.NetworkHandler
+import com.example.network.interceptor.NetworkInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -26,8 +29,12 @@ class NetworkModule {
     @Singleton
     fun provideOkhttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
+        networkHandler: NetworkHandler
     ): OkHttpClient {
-        return OkHttpClient.Builder().addInterceptor(loggingInterceptor).build()
+        return OkHttpClient.Builder()
+            .addInterceptor(NetworkInterceptor(networkHandler))
+            .addInterceptor(loggingInterceptor)
+            .build()
     }
 
     @Provides

@@ -91,6 +91,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(project(":core:network"))
 
     // grpc
     implementation("io.grpc:grpc-okhttp:1.63.0")
@@ -99,9 +102,6 @@ dependencies {
     implementation("com.google.protobuf:protobuf-kotlin-lite:4.26.1")
     implementation("io.grpc:grpc-kotlin-stub:1.4.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
-
-//    implementation (libs.retrofit.v300)
-//    implementation(libs.logging.interceptor.v532)
 
 
 }

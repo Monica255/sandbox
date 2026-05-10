@@ -35,7 +35,7 @@ class AnimalViewModel @Inject constructor(
             try {
                 setLodaing(true)
                 val response = repository.getAnimal()
-                Log.d("AnimalViewModel", response.toString())
+//                Log.d("AnimalViewModel", response.toString())
                 _uiState.update { it ->
                     it.copy(
                         list = response.data.map { it.mapToDomain() }
@@ -45,7 +45,7 @@ class AnimalViewModel @Inject constructor(
                 throw  e
             } catch (e: Exception){
                 // TODO
-                Log.d("AnimalViewModel", e.message.toString())
+//                Log.d("AnimalViewModel", e.message.toString())
             }finally {
                 setLodaing(false)
             }
