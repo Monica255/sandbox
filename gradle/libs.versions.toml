@@ -2,6 +2,8 @@
 
 # Android
 agp = "8.8.2"
+converterGson = "3.0.0"
+gson = "2.14.0"
 kotlin = "2.1.10"
 ksp = "2.1.10-1.0.31"
 
@@ -36,6 +38,7 @@ coil = "2.6.0"
 datastore = "1.1.1"
 
 # Room
+retrofitVersion = "3.0.0"
 room = "2.6.1"
 
 # Testing
@@ -48,6 +51,8 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+converter-gson-v300 = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 # Core
@@ -85,6 +90,7 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
 # Testing
 junit = { module = "junit:junit", version.ref = "junit" }
+retrofit-v300 = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

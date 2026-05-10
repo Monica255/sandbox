@@ -38,15 +38,15 @@ fun GrpcScreen(
     ) {
         Text(
             text = module?.moduleName ?: "",
-            modifier = Modifier.padding(6.dp),
+            modifier = Modifier.padding(24.dp),
             style = MaterialTheme.typography.headlineSmall
         )
-        PubSubScreen()
+        GrpcContent()
     }
 }
 
 @Composable
-fun PubSubScreen(viewModel: GrpcViewModel = hiltViewModel()) {
+fun GrpcContent(viewModel: GrpcViewModel = hiltViewModel()) {
     val events by viewModel.events.collectAsState()
     var message by remember { mutableStateOf("") }
     val topic = "news"
@@ -55,7 +55,7 @@ fun PubSubScreen(viewModel: GrpcViewModel = hiltViewModel()) {
         viewModel.subscribeTo(topic)
     }
 
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column(modifier = Modifier.padding(horizontal = 24.dp)) {
         Row {
             TextField(
                 value = message,
@@ -74,12 +74,18 @@ fun PubSubScreen(viewModel: GrpcViewModel = hiltViewModel()) {
         Spacer(modifier = Modifier.height(16.dp))
 
         LazyColumn {
-            items(items= events) { event ->
-                Card(modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
+            items(items = events) { event ->
+                Card(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 4.dp)) {
                     Column(modifier = Modifier.padding(12.dp)) {
                         Text("#${event.topic}", style = MaterialTheme.typography.labelSmall)
                         Text(event.data, style = MaterialTheme.typography.bodyLarge)
-                        Text(event.id, style = MaterialTheme.typography.bodySmall, color = Color.Gray)
+                        Text(
+                            event.id,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = Color.Gray
+                        )
                     }
                 }
             }

@@ -84,6 +84,11 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // Retrofit
+    implementation (libs.gson)
+    implementation (libs.retrofit.v300)
+    implementation (libs.converter.gson.v300)
+
     // grpc
     implementation("io.grpc:grpc-okhttp:1.63.0")
     implementation("io.grpc:grpc-stub:1.63.0")

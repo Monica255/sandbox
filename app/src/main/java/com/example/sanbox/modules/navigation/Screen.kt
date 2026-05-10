@@ -9,7 +9,8 @@ sealed class Screen(val route: String) {
 
 enum class Modules(val moduleName: String, val id: Int) {
     GRPC("GRPC", 1),
-    OTHERS("others", 2);
+    COR("Chain of Responsibility", 2),
+    OTHERS("Others", 3);
 
     companion object {
         fun fromId(id: Int): Modules? {
