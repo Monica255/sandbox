@@ -13,7 +13,7 @@ enum class Modules(val moduleName: String, val id: Int) {
     OTHERS("Others", 3),
     FETCH_DATA("Fetch Data", 4),
     ECDSA("Ecdsa", 5),
-    WEAROS("Ecdsa", 5);
+    WEAROS("WearOS", 6);
 
     companion object {
         fun fromId(id: Int): Modules? {
