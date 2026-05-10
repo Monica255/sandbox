@@ -16,12 +16,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
 fun WearScreen(viewModel: WearViewModel = hiltViewModel()) {
 
     var input by remember { mutableStateOf("") }
-    val message by viewModel.message.collectAsState()
+    val message by viewModel.message.collectAsStateWithLifecycle()
     Column(
         modifier = Modifier.padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)

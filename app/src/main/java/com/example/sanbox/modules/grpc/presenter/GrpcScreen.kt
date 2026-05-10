@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.sanbox.modules.navigation.Modules
 
 @Composable
@@ -47,7 +48,7 @@ fun GrpcScreen(
 
 @Composable
 fun GrpcContent(viewModel: GrpcViewModel = hiltViewModel()) {
-    val events by viewModel.events.collectAsState()
+    val events by viewModel.events.collectAsStateWithLifecycle()
     var message by remember { mutableStateOf("") }
     val topic = "news"
 

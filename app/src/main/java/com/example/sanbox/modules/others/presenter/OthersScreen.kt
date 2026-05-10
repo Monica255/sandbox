@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kotlinx.coroutines.delay
 import org.intellij.lang.annotations.Pattern
 
@@ -181,7 +182,7 @@ fun Content(viewModel: OthersViewModel) {
         }
     }
 
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.state.collectAsStateWithLifecycle()
     var q by remember { mutableStateOf("") }
 
     val snackbarHostState = remember {

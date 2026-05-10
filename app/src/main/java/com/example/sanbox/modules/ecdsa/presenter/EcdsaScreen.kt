@@ -15,13 +15,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun EcdsaScreen(viewModel: EcdsaViewModel = viewModel()) {
 
     var input by remember { mutableStateOf("") }
-    val signature by viewModel.signature.collectAsState()
+    val signature by viewModel.signature.collectAsStateWithLifecycle()
 
     Column(
         modifier = Modifier.padding(16.dp),
