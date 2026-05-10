@@ -12,7 +12,8 @@ enum class Modules(val moduleName: String, val id: Int) {
     COR("Chain of Responsibility", 2),
     OTHERS("Others", 3),
     FETCH_DATA("Fetch Data", 4),
-    ECDSA("Ecdsa", 5);
+    ECDSA("Ecdsa", 5),
+    WEAROS("WearOS", 6);
 
     companion object {
         fun fromId(id: Int): Modules? {

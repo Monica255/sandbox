@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="android_wear_capabilities">
+        <!-- The name of the capability -->
+        <item>stockbit_core_binding</item>
+        <item>mfa_verification_provider</item>
+    </string-array>
+</resources>

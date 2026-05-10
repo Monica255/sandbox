@@ -13,7 +13,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.sanbox"
+        applicationId = "com.example.sandbox"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(project(":core:network"))
+    implementation(project(":core:common"))
 
     // --- Compose BOM ---
     implementation(platform(libs.compose.bom))
@@ -94,6 +95,10 @@ dependencies {
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(project(":core:network"))
+
+    // wearable
+    implementation(libs.play.services.wearable.v1820)
+
 
     // grpc
     implementation("io.grpc:grpc-okhttp:1.63.0")
