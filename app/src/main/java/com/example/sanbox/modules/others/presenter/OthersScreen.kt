@@ -1,5 +1,6 @@
 package com.example.sanbox.modules.others.presenter
 
+import android.util.Patterns
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,12 +30,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import org.intellij.lang.annotations.Pattern
 
 
 @Composable
@@ -42,14 +42,15 @@ fun OthersScreen(viewModel: OthersViewModel = hiltViewModel()) {
     Content4()
 }
 
+
 @Composable
 fun Content4() {
-    var username by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
     val enabled by remember {
         derivedStateOf {
-            username.isNotEmpty() && password.isNotEmpty()
+            email.isNotEmpty() && password.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
         }
     }
     Column(
@@ -58,12 +59,12 @@ fun Content4() {
     ) {
         TextField(
             modifier = Modifier.fillMaxWidth(),
-            value = username,
+            value = email,
             placeholder = {
                 Text("Username")
             },
             onValueChange = {
-                username = it
+                email = it
             }
         )
         TextField(
@@ -183,17 +184,33 @@ fun Content(viewModel: OthersViewModel) {
     val state by viewModel.state.collectAsState()
     var q by remember { mutableStateOf("") }
 
-    LaunchedEffect(q) {
-        val cleaned = q.trim()
-        if (cleaned.isBlank()) return@LaunchedEffect
-        delay(500)
-        viewModel.fetchData(cleaned)
-    }
-
     val snackbarHostState = remember {
         SnackbarHostState()
     }
     val scope = rememberCoroutineScope()
+
+//    LaunchedEffect(q) {
+//        val cleaned = q.trim()
+//        if (cleaned.isBlank()) return@LaunchedEffect
+//        delay(500)
+//        viewModel.fetchData(cleaned)
+//    }
+
+    LaunchedEffect(q) {
+        viewModel.updateQuery(q)
+    }
+
+    LaunchedEffect(Unit) {
+        viewModel.event.collect {
+            when(it){
+                OthersViewModel.Event.ShowToast -> {
+                    snackbarHostState.showSnackbar("yow")
+                }
+                else -> {}
+            }
+        }
+    }
+
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) }
     ) { paddingValues ->
@@ -206,9 +223,7 @@ fun Content(viewModel: OthersViewModel) {
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {
-                    scope.launch {
-                        snackbarHostState.showSnackbar("yow")
-                    }
+                    viewModel.emit(OthersViewModel.Event.ShowToast)
                 }
             ) {
                 Text("Click")

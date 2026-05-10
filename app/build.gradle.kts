@@ -47,6 +47,12 @@ android {
             )
         }
     }
+
+    packagingOptions {
+        resources {
+            excludes += "META-INF/versions/9/OSGI-INF/MANIFEST.MF"
+        }
+    }
 }
 
 dependencies {
@@ -54,6 +60,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(project(":core:network"))
 
     // --- Compose BOM ---
     implementation(platform(libs.compose.bom))
@@ -79,15 +86,11 @@ dependencies {
     // Hilt + Compose
     implementation(libs.hilt.navigation.compose)
 
+
     // --- Testing ---
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    // Retrofit
-    implementation (libs.gson)
-    implementation (libs.retrofit.v300)
-    implementation (libs.converter.gson.v300)
 
     // grpc
     implementation("io.grpc:grpc-okhttp:1.63.0")
@@ -96,6 +99,10 @@ dependencies {
     implementation("com.google.protobuf:protobuf-kotlin-lite:4.26.1")
     implementation("io.grpc:grpc-kotlin-stub:1.4.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
+
+//    implementation (libs.retrofit.v300)
+//    implementation(libs.logging.interceptor.v532)
+
 
 }
 

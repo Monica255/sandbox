@@ -24,3 +24,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "sanbox"
 include(":app")
+include(":core:network")
+project(":core:network").projectDir = file("core/network")
