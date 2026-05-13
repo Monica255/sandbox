@@ -191,7 +191,6 @@ fun Content(viewModel: OthersViewModel) {
     val scope = rememberCoroutineScope()
 
 //    LaunchedEffect(q) {
-//        val cleaned = q.trim()
 //        if (cleaned.isBlank()) return@LaunchedEffect
 //        delay(500)
 //        viewModel.fetchData(cleaned)

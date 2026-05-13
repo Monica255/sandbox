@@ -102,6 +102,7 @@ dependencies {
 
     // Pagination
     implementation(libs.androidx.paging.compose)
+    implementation(libs.androidx.paging.runtime)
 
     // grpc
     implementation("io.grpc:grpc-okhttp:1.63.0")

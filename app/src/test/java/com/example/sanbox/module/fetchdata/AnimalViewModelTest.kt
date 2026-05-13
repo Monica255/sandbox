@@ -1,10 +1,14 @@
 package com.example.sanbox.module.fetchdata
 
 import android.util.Log
+import androidx.paging.AsyncPagingDataDiffer
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListUpdateCallback
 import com.example.network.data.animal.model.AnimalResponse
 import com.example.network.data.animal.model.AttributeResponse
 import com.example.network.data.animal.model.FactResponse
 import com.example.network.data.animal.repository.AnimalRepository
+import com.example.sanbox.modules.fetchdata.presenter.Animal
 import com.example.sanbox.modules.fetchdata.presenter.AnimalViewModel
 import com.example.sanbox.modules.fetchdata.utils.AnimalMapper.mapToDomain
 import com.google.protobuf.any
@@ -14,6 +18,8 @@ import io.mockk.mockk
 import io.mockk.mockkClass
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
@@ -33,20 +39,20 @@ class AnimalViewModelTest {
     private lateinit var viewModel: AnimalViewModel
 
     @Before
-    fun setUp(){
+    fun setUp() {
         Dispatchers.setMain(testDispatcher)
         viewModel = AnimalViewModel(repo)
     }
 
     @After
-    fun tearDown(){
+    fun tearDown() {
         Dispatchers.resetMain()
     }
 
     @Test
-    fun `when fetch data update data state`() = runTest{
+    fun `when fetch data update data state`() = runTest {
         val expectedData = FactResponse(
-            List(5){
+            List(5) {
                 AnimalResponse(
                     id = "qwe",
                     attributeResponse = AttributeResponse(
