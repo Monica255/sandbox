@@ -61,7 +61,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(project(":core:network"))
-    implementation(project(":core:common"))
+    api(project(":core:common"))
 
     // --- Compose BOM ---
     implementation(platform(libs.compose.bom))
